@@ -81,7 +81,16 @@ client.unload = command => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
-    msg.reply('Aleyküm selam,  hoş geldin ^^');
+    
+        const embed = new Discord.RichEmbed()
+     .setColor("#0080FF")
+    .setAuthor(client.user.username,client.user.displayAvatarURL)
+    .setDescription(`${msg.guild.username}, Aramıza Hoşgeldin :)
+    
+    Şu Kanallara Göz Atmayı Unutma <#693286362778173492> - <#693286383728459838>`,true)
+    .setTimestamp()
+    .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
+    msg.channel.send(embed);
   }
 });
 
