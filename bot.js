@@ -124,3 +124,12 @@ client.on("userUpdate", async(eski, yeni) => {
   }
   })
 // TAG \\
+
+// KANAL ACIKLAMASI \\
+client.on("ready" , async () =>{
+           var gecikme = setInterval (function () {
+           client.channels.get("693286779062845440").setTopic("Suncumuz " +client.guilds.get("693280770680291359").members.size+" Kişi ve " +client.guilds.get("693280770680291359").members.filter(m => m.presence.status != 'offline').size +" Aktif Var")
+        }, 30 * 1000); 
+
+})
+// KANAL ACIKLAMASI \\
