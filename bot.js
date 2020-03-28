@@ -113,7 +113,7 @@ client.login(ayarlar.token);
 // TAG \\
 client.on("userUpdate", async(eski, yeni) => {
   if(eski.username !== yeni.username) {
-  if(!yeni.username.includes("∼") && client.guilds.get("Sunucu İd").members.get(yeni.id).roles.has("693293366951149680")) {
+  if(!yeni.username.includes("∼") && client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("693293366951149680")) {
      client.guilds.get("693280770680291359").members.get(yeni.id).removeRole("693293366951149680")
      client.channels.get('693316642863841360').send(`:broken_heart: ${yeni}, ∼ tagını çıkardı!`)
     }
