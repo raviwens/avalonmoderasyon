@@ -81,19 +81,85 @@ client.unload = command => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
-    
+        let vUser = msg.member.id;
+
         const embed = new Discord.RichEmbed()
-     .setColor("#0080FF")
+     .setColor("#76ebed")
     .setAuthor(client.user.username,client.user.displayAvatarURL)
-    .setDescription(`${msg.guild.username}, Aramıza Hoşgeldin :)
-    
-    Şu Kanallara Göz Atmayı Unutma <#693286362778173492> - <#693286383728459838>`,true)
+    .setDescription(`<@${vUser}>, Aleyküm Selam Hoşgeldin :)`,true)
+    .setTimestamp()
+    .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
+    msg.channel.send(embed);
+  }
+});
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Selam') {
+        let vUser = msg.member.id;
+
+        const embed = new Discord.RichEmbed()
+     .setColor("#76ebed")
+    .setAuthor(client.user.username,client.user.displayAvatarURL)
+    .setDescription(`<@${vUser}>, Aleyküm Selam Hoşgeldin :)`,true)
+    .setTimestamp()
+    .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
+    msg.channel.send(embed);
+  }
+});
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Selamun Aleyküm') {
+        let vUser = msg.member.id;
+
+        const embed = new Discord.RichEmbed()
+     .setColor("#76ebed")
+    .setAuthor(client.user.username,client.user.displayAvatarURL)
+    .setDescription(`<@${vUser}>, Aleyküm Selam Hoşgeldin :)`,true)
     .setTimestamp()
     .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
     msg.channel.send(embed);
   }
 });
 
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Selamun Aleykum') {
+        let vUser = msg.member.id;
+
+        const embed = new Discord.RichEmbed()
+     .setColor("#76ebed")
+    .setAuthor(client.user.username,client.user.displayAvatarURL)
+    .setDescription(`<@${vUser}>, Aleyküm Selam Hoşgeldin :)`,true)
+    .setTimestamp()
+    .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
+    msg.channel.send(embed);
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Selamün Aleyküm') {
+        let vUser = msg.member.id;
+
+        const embed = new Discord.RichEmbed()
+     .setColor("#76ebed")
+    .setAuthor(client.user.username,client.user.displayAvatarURL)
+    .setDescription(`<@${vUser}>, Aleyküm Selam Hoşgeldin :)`,true)
+    .setTimestamp()
+    .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
+    msg.channel.send(embed);
+  }
+});
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Selamün Aleykum') {
+        let vUser = msg.member.id;
+
+        const embed = new Discord.RichEmbed()
+     .setColor("#76ebed")
+    .setAuthor(client.user.username,client.user.displayAvatarURL)
+    .setDescription(`<@${vUser}>, Aleyküm Selam Hoşgeldin :)`,true)
+    .setTimestamp()
+    .setFooter(`KURALLARA UYMAYI UNUTMAYINIZ.!`)
+    msg.channel.send(embed);
+  }
+});
 client.elevation = message => {
   if(!message.guild) {
 	return; }
