@@ -126,10 +126,25 @@ client.on("userUpdate", async(eski, yeni) => {
 // TAG \\
 
 // KANAL ACIKLAMASI \\
-client.on("ready" , async () =>{
-           var gecikme = setInterval (function () {
-           client.channels.get("693286779062845440").setTopic("Suncumuz " +client.guilds.get("693280770680291359").members.size+" Kişi ve " +client.guilds.get("693280770680291359").members.filter(m => m.presence.status != 'offline').size +" Aktif Var")
-        }, 30 * 1000); 
 
+client.on("ready", async () => {
+let guild = client.guilds.get("693280770680291359") //Sunucunun ID'sini yazıyoruz.
+let online = guild.members.filter(m => !m.user.bot && m.user.presence.status !== "online").size;
+  setInterval(() => {
+    client.channels.get("693286779062845440").setTopic(
+      `Toplam Üye: ${guild.members.size}\nAktif Üye: ${online}`
+        .replace(new RegExp("0", "g"), " 0️⃣") 
+        .replace(new RegExp("1", "g"), " 1️⃣")
+        .replace(new RegExp("2", "g"), " 2️⃣")
+        .replace(new RegExp("3", "g"), " 3️⃣")
+        .replace(new RegExp("4", "g"), " 4️⃣")
+        .replace(new RegExp("5", "g"), " 5️⃣")
+        .replace(new RegExp("6", "g"), " 6️⃣")
+        .replace(new RegExp("7", "g"), " 7️⃣")
+        .replace(new RegExp("8", "g"), " 8️⃣")
+        .replace(new RegExp("9", "g"), " 9️⃣")
+    );
+  }, 3000);
 })
 // KANAL ACIKLAMASI \\
+
