@@ -6,7 +6,9 @@ const { stripIndents } = require('common-tags');
 require('moment-duration-format');
 
 exports.run = async (bot, message, args) => {
-  
+  message.delete();
+  const yasak = bot.emojis.get('693976996321165385');
+  if (message.channel.id !== '693286888341110885') return message.channel.send(`${yasak} **Bu komutun kullanımı, bu kanalda engellenmiştir.**`).then(m => m.delete(5000));
   const db = require('quick.db');
   
   
