@@ -160,6 +160,48 @@ client.on('message', msg => {
     msg.channel.send(embed);
   }
 });
+
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'hb') {
+      msg.delete()
+        let vUser = msg.member.id;
+        const emoji = client.emojis.get('693976520644886590');
+          msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
+  }
+});
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Hoşbulduk') {
+      msg.delete()
+        let vUser = msg.member.id;
+        const emoji = client.emojis.get('693976520644886590');
+          msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
+  }
+});
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Hoşbuldum') {
+      msg.delete()
+        let vUser = msg.member.id;
+        const emoji = client.emojis.get('693976520644886590');
+          msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
+  }
+});
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Hoş Bulduk') {
+      msg.delete()
+        let vUser = msg.member.id;
+        const emoji = client.emojis.get('693976520644886590');
+          msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
+  }
+});
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'Hoş Buldum') {
+      msg.delete()
+        let vUser = msg.member.id;
+        const emoji = client.emojis.get('693976520644886590');
+          msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
+  }
+});
+
 client.elevation = message => {
   if(!message.guild) {
 	return; }
@@ -185,15 +227,11 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
-const emoji = client.emojis.get('693976520644886590');
 client.on('message', async msg => {
   if (msg.content.toLowerCase() === 'sa') {
     await msg.react('🇦');
     await msg.react('🇸');
-    await msg.react(`${emoji}`);
-    
-  }
-});
+}});
 
 // TAG \\
 client.on("userUpdate", async(eski, yeni) => {
