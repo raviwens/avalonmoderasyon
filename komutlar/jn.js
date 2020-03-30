@@ -1,7 +1,8 @@
 exports.run = async (client, message) => {
+  const emoji = client.emojis.get('693972316182282271');
       message.delete()
     if (!message.member.roles.find("name", "👑")) {
-        return message.channel.send(' **Bu Komutu Kullanmak için** \*`👑*\` **Rolüne Sahip Olman Lazım** ')
+        return message.channel.send(`${emoji} **Bu Komutu Kullanmak için** \*'👑*\' **Rolüne Sahip Olman Lazım** `)
             .then(m => m.delete(5000));
     }  
   if(message.author.bot || message.channel.type === "dm") return;
