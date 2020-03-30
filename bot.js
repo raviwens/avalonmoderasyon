@@ -185,10 +185,13 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
+const emoji = client.emojis.get('693976520644886590');
 client.on('message', async msg => {
   if (msg.content.toLowerCase() === 'sa') {
     await msg.react('🇦');
     await msg.react('🇸');
+    await msg.react(`${emoji}`);
+    
   }
 });
 
