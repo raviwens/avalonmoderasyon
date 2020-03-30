@@ -78,7 +78,7 @@ client.unload = command => {
   });
 };
 
-
+// EMOJİLİ MESAJ \\
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
         let vUser = msg.member.id;
@@ -201,6 +201,16 @@ client.on('message', msg => {
           msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
   }
 });
+client.on('message', msg => {
+  if (msg.content.toLowerCase() === 'amk') {
+      msg.delete()
+        let vUser = msg.member.id;
+        const emoji = client.emojis.get('693976577167589427');
+          msg.channel.send(`<@${vUser}> Diyorki ${emoji}`);
+  }
+});
+
+// EMOJİLİ MESAJ \\
 
 client.elevation = message => {
   if(!message.guild) {
