@@ -13,10 +13,12 @@ const embed = new Discord.RichEmbed()
      .setColor('RANDOM')
     .setDescription(`
  ${}<@${message.author.id}> Yardımcı Oluyoruz Size :)
-${elmas} Sol Altta İsim ve Discord Numaranızın yanında 
-${elmas}
-${elmas}
-${elmas}
+${elmas} Sol Altta İsim ve Discord Numaranızın yanında Mikrofon Ses ve Ayarlar Menüsü var.
+${elmas} Ayarlar Menüsüne Tıklıyorsunuz.
+${elmas} "HESABIM" Bölümünde Düzenleye Tıklayın
+${elmas} Kullanıcı Adınızın Başına "∼" Tagını Ekleyin.
+${elmas} Şifrenizi Yazıp Kaydete Tıklayın
+                      
  
 `,true)
         .setFooter(`Vampir Köylü Oyunu..`)
