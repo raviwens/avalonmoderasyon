@@ -1,26 +1,28 @@
+const Discord = require('discord.js');
+
 exports.run = async (client, message) => {
         message.delete()
-    if (!message.member.roles.find("name", "👑")) {
-        return message.channel.send(' **Bu Komutu Kullanmak için** \*`👑*\` **Rolüne Sahip Olman Lazım** ')
-            .then(m => m.delete(5000));
-    }  
-  if(message.author.bot || message.channel.type === "dm") return;
-    if (!message.member.voiceChannel) { return message.channel.send("Zaten Kanalda değilim?"); }
-  
-    message.member.voiceChannel.leave();
-    return message.channel.send(`Kanaldan Ayrıldım`);
-  };
+let guild = client.guilds.get("693280770680291359") //Sunucunun ID'sini yazıyoruz.
+let online = guild.members.filter(m => !m.user.bot && m.user.presence.status !== "online").size;
+  const embed = new Discord.RichEmbed()
+     .setColor('RANDOM')
+    .setDescription(`
+           Toplam Üye: ${guild.members.size}\nAktif Üye: ${online}
+`,true)
+
+    message.send.channel(embed);
+    };
   
   exports.conf = {
     enabled: true,
 
-    aliases: [],
+    aliases: ['kaçkişiyiz'],
     permLevel: 0,
   };
   
   exports.help = {
-    name: "lv",
-    description: "Bulunduğu odadan gider.",
-    usage: "çık",
+    name: "kaçkişiyiz",
+    description: "Kaç Kişiyiz.",
+    usage: "kaçkişiyiz",
 
   };
