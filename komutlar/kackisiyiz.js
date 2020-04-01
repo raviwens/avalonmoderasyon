@@ -4,14 +4,13 @@ exports.run = async (client, message) => {
         message.delete()
 let guild = client.guilds.get("693280770680291359") //Sunucunun ID'sini yazıyoruz.
 let online = guild.members.filter(m => !m.user.bot && m.user.presence.status !== "online").size;
-  const embed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
      .setColor('RANDOM')
     .setDescription(`
-           Toplam Üye: ${guild.members.size}\nAktif Üye: ${online}
+ Toplam Üye: ${guild.members.size}\nAktif Üye: ${online}
 `,true)
-
-    message.send.channel(embed);
-    };
+      message.channel.send(embed)
+  };
   
   exports.conf = {
     enabled: true,
