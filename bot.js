@@ -259,3 +259,18 @@ client.on("message", async msg => {
     dba.delete(`puan_${msg.author.id + msg.guild.id}`);
   }
 });
+
+// TAG \\
+client.on("userUpdate", async(eski, yeni) => {
+  if(eski.username !== yeni.username) {
+  if(!yeni.username.includes("¹") && client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("702271564741083209")) {
+     client.guilds.get("693280770680291359").members.get(yeni.id).removeRole("702271564741083209")
+     client.channels.get('702273748098875393').send(`:broken_heart: ${yeni}, ¹ tagını çıkardı!`)
+    }
+     if(yeni.username.includes("¹") && !client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("702271564741083209")) {
+      client.channels.get('702273748098875393').send(`:heart: ${yeni}, ¹ tagını alarak Prive Katıldı!`)
+      client.guilds.get("693280770680291359").members.get(yeni.id).addRole("702271564741083209")
+     }
+  }
+  })
+// TAG \\
