@@ -4,6 +4,7 @@ const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
+const dba = require("quick.db");
 require('./util/eventLoader')(client);
 
 var prefix = ayarlar.prefix;
@@ -243,25 +244,18 @@ client.on('message', async msg => {
     await msg.react('🇸');
 }});
 
-// TAG \\
-client.on("userUpdate", async(eski, yeni) => {
-  if(eski.username !== yeni.username) {
-  if(!yeni.username.includes("♅") && client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("693293366951149680")) {
-     client.guilds.get("693280770680291359").members.get(yeni.id).removeRole("693293366951149680")
-     client.channels.get('693316642863841360').send(`:broken_heart: ${yeni}, ♅ tagını çıkardı!`)
-    }
-     if(yeni.username.includes("♅") && !client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("693293366951149680")) {
-      client.channels.get('693316642863841360').send(`:heart: ${yeni}, ♅ tagını aldı!`)
-      client.guilds.get("693280770680291359").members.get(yeni.id).addRole("693293366951149680")
-     }
-  }
-  })
-// TAG \\
+client.on("message", async msg => {
+  if (msg.channel.type === "dm") return;
+  if (msg.author.bot) return;
 
-// BOT OFFLINE KONTROL \\
-client.on("ready", async () => {
-  setInterval(() => {
-  client.channels.get("700351796706803762").send(`[ANA] Bot Durumu: Online`)
-}, 300000)//milsaniye
-})
-// BOT OFFLINE KONTROL \\
+  if (msg.content.length > 7) {
+    dba.add(`puan_${msg.author.id + msg.guild.id}`, 1);
+  }
+
+  if (dba.fetch(`puan_${msg.author.id + msg.guild.id}`) > 150) {
+    msg.reply("Seviye atladınız.");
+    dba.add(`seviye_${msg.author.id + msg.guild.id}`, 1);
+
+    dba.delete(`puan_${msg.author.id + msg.guild.id}`);
+  }
+});

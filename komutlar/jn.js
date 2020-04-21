@@ -1,5 +1,5 @@
 exports.run = async (client, message) => {
-  const emoji = client.emojis.get('693972316182282271');
+  const emoji = client.emojis.get('702265610092150885');
       message.delete()
     if (!message.member.roles.find("name", "👑")) {
         return message.channel.send(`${emoji} **Bu Komutu Kullanmak için** \*'👑*\' **Rolüne Sahip Olman Lazım** `)
