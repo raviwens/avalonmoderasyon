@@ -238,39 +238,8 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
-client.on('message', async msg => {
-  if (msg.content.toLowerCase() === 'sa') {
-    await msg.react('🇦');
-    await msg.react('🇸');
-}});
-
-client.on("message", async msg => {
-  if (msg.channel.type === "dm") return;
-  if (msg.author.bot) return;
-
-  if (msg.content.length > 7) {
-    dba.add(`puan_${msg.author.id + msg.guild.id}`, 1);
-  }
-
-  if (dba.fetch(`puan_${msg.author.id + msg.guild.id}`) > 150) {
-    msg.reply("Seviye atladınız.");
-    dba.add(`seviye_${msg.author.id + msg.guild.id}`, 1);
-
-    dba.delete(`puan_${msg.author.id + msg.guild.id}`);
-  }
+client.on(`guildMemberAdd`, async member => {
+  
+  member.send(``);
+  
 });
-
-// TAG \\
-client.on("userUpdate", async(eski, yeni) => {
-  if(eski.username !== yeni.username) {
-  if(!yeni.username.includes("™") && client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("702271564741083209")) {
-     client.guilds.get("693280770680291359").members.get(yeni.id).removeRole("702271564741083209")
-     client.channels.get('702273748098875393').send(`:broken_heart: ${yeni}, ™ çıkardı Prive Veda Etti!`)
-    }
-     if(yeni.username.includes("™") && !client.guilds.get("693280770680291359").members.get(yeni.id).roles.has("702271564741083209")) {
-      client.channels.get('702273748098875393').send(`:heart: ${yeni}, ™ alarak Prive Katıldı!`)
-      client.guilds.get("693280770680291359").members.get(yeni.id).addRole("702271564741083209")
-     }
-  }
-  })
-// TAG \\
