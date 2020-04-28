@@ -211,6 +211,8 @@ client.on('message', msg => {
   }
 });
 
+
+
 // EMOJİLİ MESAJ \\
 
 client.elevation = message => {
@@ -239,7 +241,10 @@ client.on('error', e => {
 client.login(ayarlar.token);
 
 client.on(`guildMemberAdd`, async member => {
-  
-  member.send(``);
-  
+    const e = new Discord.RichEmbed()
+    .setColor(`RANDOM`)
+    .setImage(`https://media.giphy.com/media/A06UFEx8jxEwU/giphy.gif`)
+    .addField(`Loz Bey Sunucumuza Hoşgeldin :) `, `LozBey`)
+    .setFooter(`Hoşgeldin Sistemi`)
+    member.send(e);
 });
