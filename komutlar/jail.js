@@ -3,20 +3,16 @@ const ms = require("ms");
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.roles.find("name", "Yetkili")) {
-        return message.channel.send(' **Bu Komutu Kullanmak için** \*`Yetkili*\` **Rolüne Sahip Olman Lazım** ')
-            .then(m => m.delete(5000));
-    } 
  let lozBey = message.mentions.members.first() || message.guild.members.get(args[0])
-  if(!lozBey) return message.channel.send("Lütfen susturulacak kişiyi etiketleyiniz.");
-  if(lozBey.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Benden yetkili birini susturamam.");
-  if (lozBey.id === message.author.id) return message.channel.send("Kendinizi susturamazsınız.");
-  let lozRol = message.guild.roles.find(`name`, "Susturuldu");
+  if(!lozBey) return message.channel.send("Lütfen Jail Atılıcak kişiyi etiketleyiniz.");
+  if(lozBey.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Benden yetkili birini Jaile Atamam..");
+  if (lozBey.id === message.author.id) return message.channel.send("Kendinizi Jaile Atamazsınız..");
+  let lozRol = message.guild.roles.find(`name`, "Cezalı Rol Adı");
 
   if(!lozRol){
     try{
       lozRol = await message.guild.createRole({
-        name: "Susturuldu",
+        name: "Cezalı Rol Adı",
         color: "#666666",
         permissions:[]
       })
@@ -31,15 +27,15 @@ module.exports.run = async (client, message, args) => {
     }
   }
 
-  let efeZaman = args[1];
-  if(!efeZaman) return message.channel.send("Lütfen doğru bir zaman dilimi giriniz. Örneğin: ***!jail @kişi 1s/m/h/d sebep**");
+  let lozZaman = args[1];
+  if(!lozZaman) return message.channel.send("Lütfen doğru bir zaman dilimi giriniz. Örneğin: ***!jail @kişi 1s/m/h/d sebep**");
   let sebep = args[2]
-  if(!sebep) return message.channel.send("Lütfen bir sebep giriniz. Örneğin: ***!chatmute @kişi 1s/m/h/d sebep**");
+  if(!sebep) return message.channel.send("Lütfen bir sebep giriniz. Örneğin: ***!jail @kişi 1s/m/h/d sebep**");
 
   await(lozBey.addRole(lozRol.id));
    let embed = new Discord.RichEmbed()
               .setAuthor(message.author.tag, message.author.displayAvatarURL)
-                .setDescription(` ${efeZaman} süreliğine  tarafından ${sebep} sebebiyle susturuldu!`)
+                .setDescription(`${lozBey} Adlı Kişi ${lozZaman} süreliğine <@${message.author.id}> tarafından ${sebep} sebebiyle Jaile Atıldı!`)
                 .setColor("RANDOM");
   message.channel.send(embed);
 
@@ -47,10 +43,10 @@ module.exports.run = async (client, message, args) => {
     lozBey.removeRole(lozRol.id);
     let sembed =  new Discord.RichEmbed()
               .setAuthor(message.author.tag, message.author.displayAvatarURL)
-                .setDescription(` üyesinin, ${efeZaman} sürelik susturulması, otomatik olarak kaldırıldı.`)
+                .setDescription(`${lozBey} Adlı Kişinin, ${lozZaman} sürelik Jail Cezası, otomatik olarak kaldırıldı.`)
                 .setColor("RANDOM");
     message.channel.send(sembed);
-  }, ms(efeZaman));
+  }, ms(lozZaman));
 
   message.delete();
 
@@ -59,12 +55,12 @@ module.exports.run = async (client, message, args) => {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ["chat-mute","süreli-sustur"],
+    aliases: ["jailat"],
     permLevel: 0
 };
 
 exports.help = {
-    name: 'sustur',
-    description: 'sustur',
-    usage: 'sustur'
+    name: 'jail',
+    description: 'jail',
+    usage: 'jail'
 };
